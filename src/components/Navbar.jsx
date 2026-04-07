@@ -44,17 +44,40 @@ export default function Navbar() {
         </div>
       </nav>
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-outline-variant bg-[#fcf9f6]" id="mobile-menu">
-          <div className="max-w-7xl mx-auto px-4 py-4 grid grid-cols-2 gap-3 text-sm font-medium">
-            <NavLink className="px-3 py-2 rounded-md bg-surface-container-low text-on-surface" to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
-            <NavLink className="px-3 py-2 rounded-md bg-surface-container-low text-on-surface" to="/menu" onClick={() => setIsMobileMenuOpen(false)}>Menu</NavLink>
-            <NavLink className="px-3 py-2 rounded-md bg-surface-container-low text-on-surface" to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</NavLink>
-            <NavLink className="px-3 py-2 rounded-md bg-surface-container-low text-on-surface" to="/testimonials" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</NavLink>
-            <NavLink className="px-3 py-2 rounded-md bg-surface-container-low text-on-surface" to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</NavLink>
-            <NavLink className="col-span-2 px-3 py-2 rounded-md bg-primary text-on-primary text-center" to="/book" onClick={() => setIsMobileMenuOpen(false)}>Book a Table</NavLink>
+        <div className="md:hidden border-t border-outline-variant bg-[#fcf9f6] animate-in fade-in slide-in-from-top-2 duration-300" id="mobile-menu">
+          <div className="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-base font-medium">
+            <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined text-primary text-xl">home</span>
+              Home
+            </NavLink>
+            <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/menu" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined text-primary text-xl">restaurant_menu</span>
+              Menu
+            </NavLink>
+            <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/order" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined text-primary text-xl">shopping_cart_checkout</span>
+              Order Online
+            </NavLink>
+            <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/about" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined text-primary text-xl">auto_stories</span>
+              About
+            </NavLink>
+            <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/testimonials" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined text-primary text-xl">stars</span>
+              Reviews
+            </NavLink>
+            <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined text-primary text-xl">contact_support</span>
+              Contact
+            </NavLink>
+            <NavLink className="sm:col-span-2 px-4 py-4 rounded-xl bg-primary text-on-primary text-center font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2" to="/book" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="material-symbols-outlined">event_available</span>
+              Book a Table
+            </NavLink>
           </div>
         </div>
       )}
+
     </header>
   );
 }

@@ -67,12 +67,14 @@ export default function OrderOnline() {
           </div>
 
           {!isOpen && (
-            <div className="bg-surface-container-high p-8 rounded-3xl text-center mb-12 border-2 border-dashed border-outline">
-               <span className="material-symbols-outlined text-5xl text-secondary mb-4">bedtime</span>
-               <h2 className="text-2xl font-serif font-bold mb-2">Resting for Tomorrow</h2>
-               <p className="text-secondary">Our online kitchen is currently closed for orders. We'll be back at 9:00 AM!</p>
+            <div className="bg-surface-container-high p-6 md:p-8 rounded-2xl md:rounded-3xl text-center mb-10 border-2 border-dashed border-outline mx-auto w-full max-w-lg">
+               <span className="material-symbols-outlined text-4xl md:text-5xl text-secondary mb-4">bedtime</span>
+               <h2 className="text-xl md:text-2xl font-serif font-bold mb-2">Resting for Tomorrow</h2>
+               <p className="text-sm md:text-lg text-secondary leading-relaxed px-2">Our online kitchen is currently closed for orders. We'll be back at 9:00 AM!</p>
             </div>
           )}
+
+
 
           {/* ... (Existing mobile categories nav) ... */}
 

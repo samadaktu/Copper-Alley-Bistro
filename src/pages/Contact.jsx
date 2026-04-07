@@ -4,20 +4,21 @@ export default function Contact() {
   return (
     <main className="pt-[88px] min-h-screen bg-surface">
       {/* Hero Section */}
-      <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
+      <section className="relative h-[30vh] md:h-[40vh] min-h-[250px] flex items-center justify-center">
         <img 
           src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1200" 
           alt="Copper Alley Bistro ambiance" 
           className="absolute inset-0 w-full h-full object-cover filter brightness-[0.4]"
         />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold italic text-white mb-4">Get in Touch</h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">We'd love to hear from you. Reach out for private dining, events, or general inquiries.</p>
+        <div className="relative z-10 text-center px-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold italic text-white mb-4">Get in Touch</h1>
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light">We'd love to hear from you. Reach out for private dining, events, or inquiries.</p>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="max-w-7xl mx-auto px-8 py-20 lg:py-32">
+      <section className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-20 lg:py-32">
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           {/* Left Column: Info */}

@@ -35,28 +35,28 @@ export default function Home() {
   return (
     <main className="pt-[88px]">
       {/* Hero Section */}
-      <section className="relative min-h-[870px] flex items-center overflow-hidden">
+      <section className="relative min-h-[70vh] md:min-h-[870px] flex items-center overflow-hidden bg-[#1c1c1a]">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover brightness-50" alt="Luxurious dark wood restaurant interior with warm ambient lighting, copper accents, and elegantly set tables in a historic Dublin building" src="/Banner-image.webp"/>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1c1c1a]/80 to-transparent"></div>
+          <img className="w-full h-full object-cover brightness-50" alt="Luxurious dark wood restaurant interior" src="/Banner-image.webp"/>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1c1c1a]/80 via-transparent to-transparent"></div>
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-16 md:pt-0">
           <div className="max-w-2xl">
-            <h1 className="text-6xl md:text-8xl text-surface-container-lowest leading-[1.1] mb-6 font-bold italic tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-8xl text-surface-container-lowest leading-[1.2] md:leading-[1.1] mb-6 font-bold italic tracking-tight">
               Authentic Irish Dining <span className="block font-normal not-italic text-primary-fixed">Experience in Dublin</span>
             </h1>
-            <p className="text-xl text-surface-variant mb-10 leading-relaxed font-light max-w-lg">
+            <p className="text-lg md:text-xl text-surface-variant mb-10 leading-relaxed font-light max-w-lg">
               Step into a haven of warmth where 13th-century heritage meets modern culinary artistry. Discover refined flavors and a cozy atmosphere in the heart of Temple Bar.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/book">
-                <button className="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/book" className="w-full sm:w-auto">
+                <button className="w-full bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
                   Book a Table
                   <span className="material-symbols-outlined">calendar_today</span>
                 </button>
               </Link>
-              <Link to="/order">
-                <button className="bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 border border-surface-container-lowest/30 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+              <Link to="/order" className="w-full sm:w-auto">
+                <button className="w-full bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 border border-surface-container-lowest/30 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-bold text-lg transition-all">
                   Order Online
                 </button>
               </Link>
@@ -64,6 +64,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* Trust Bar */}
       <section className="bg-surface-container-low py-12">

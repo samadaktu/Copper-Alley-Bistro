@@ -3,23 +3,24 @@ import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
-    <main className="pt-24">
+    <main className="pt-24 bg-surface">
       {/* Hero Section: Editorial Header */}
-      <section className="px-8 pt-16 pb-24 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+      <section className="px-6 md:px-8 pt-12 md:pt-16 pb-16 md:pb-24 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-end">
           <div className="lg:col-span-7">
-            <span className="text-primary font-medium tracking-widest uppercase text-xs mb-4 block">Est. Dublin 13th Century</span>
-            <h1 className="text-6xl md:text-8xl font-serif font-bold leading-tight -ml-1 text-on-surface italic">
-              The Soul of <span className="text-primary-container not-italic">Dublin's</span> Heritage.
+            <span className="text-primary font-bold tracking-widest uppercase text-[10px] md:text-xs mb-4 block">Est. Dublin 13th Century</span>
+            <h1 className="text-4xl sm:text-5xl md:text-8xl font-serif font-bold leading-[1.1] text-on-surface italic">
+              The Soul of <span className="text-primary not-italic">Dublin's</span> Heritage.
             </h1>
           </div>
           <div className="lg:col-span-5 pb-4">
-            <p className="text-xl text-secondary leading-relaxed font-body">
+            <p className="text-lg md:text-xl text-secondary leading-relaxed font-body">
               Authentic Irish Dining, Modern Artistry. We bridge the gap between ancient Dublin traditions and contemporary culinary innovation.
             </p>
           </div>
         </div>
       </section>
+
 
       {/* Asymmetric History Section */}
       <section className="bg-surface-container-low py-32 overflow-hidden">
