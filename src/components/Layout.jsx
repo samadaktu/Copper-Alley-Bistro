@@ -6,7 +6,7 @@ import CartSidebar from './CartSidebar';
 
 export default function Layout() {
   return (
-    <div className="flex flex-col min-h-screen relative">
+    <div className="flex flex-col min-h-screen relative overflow-x-hidden">
       <Navbar />
       <CartSidebar />
       <div className="flex-grow">
@@ -14,5 +14,6 @@ export default function Layout() {
       </div>
       <Footer />
     </div>
+
   );
 }

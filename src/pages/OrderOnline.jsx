@@ -24,7 +24,7 @@ export default function OrderOnline() {
   };
 
   return (
-    <main className="pt-24 min-h-screen bg-surface flex max-w-[1440px] mx-auto relative px-8 gap-8">
+    <main className="pt-16 md:pt-24 min-h-screen bg-surface w-full max-w-[1440px] mx-auto relative px-4 sm:px-6 md:px-8 overflow-x-hidden">
       {/* Left Sidebar Category Nav (Desktop) */}
       <aside className="w-64 hidden lg:block sticky top-32 h-[calc(100vh-140px)] border-r border-surface-container-high pt-12 pr-8 shrink-0 overflow-y-auto scrollbar-hide pb-20">
         <h3 className="font-serif font-bold text-xl mb-10 text-on-surface">Categories</h3>
@@ -43,19 +43,19 @@ export default function OrderOnline() {
       </aside>
 
       {/* Main Content */}
-      <section className="flex-1 pt-12 pb-32">
+      <section className="w-full pt-8 md:pt-12 pb-32">
 
 
-        <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-end mb-12 border-b border-surface-container-high pb-6">
-            <div>
-              <h1 className="text-5xl font-serif font-bold italic mb-2">Order Online</h1>
-              <p className="text-secondary">{isOpen ? 'Ready in 20-30 minutes' : `Closed for ordering until ${nextOpenTime}`}</p>
+        <div className="w-full max-w-4xl mx-auto px-2 md:px-0">
+          <div className="flex flex-wrap justify-between items-start sm:items-end mb-8 md:mb-12 border-b border-surface-container-high pb-6 gap-4">
+            <div className="flex-1 min-w-[200px]">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold italic mb-2 leading-tight">Order Online</h1>
+              <p className="text-secondary text-sm md:text-base">{isOpen ? 'Ready in 20-30 minutes' : `Closed for ordering until ${nextOpenTime}`}</p>
             </div>
             {!isOpen && (
-              <div className="bg-error-container text-error px-4 py-2 rounded-xl text-sm font-bold animate-pulse flex items-center gap-2">
-                <span className="material-symbols-outlined">schedule</span>
-                Ordering Restricted (9 AM - 11 PM)
+              <div className="bg-error-container text-error px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 whitespace-nowrap overflow-hidden">
+                <span className="material-symbols-outlined text-base">schedule</span>
+                Ordering Restricted
               </div>
             )}
             {isOpen && (
@@ -67,10 +67,10 @@ export default function OrderOnline() {
           </div>
 
           {!isOpen && (
-            <div className="bg-surface-container-high p-6 md:p-8 rounded-2xl md:rounded-3xl text-center mb-10 border-2 border-dashed border-outline mx-auto w-full max-w-lg">
+            <div className="bg-surface-container-high p-6 md:p-8 rounded-2xl md:rounded-3xl text-center mb-10 border-2 border-dashed border-outline mx-auto w-full max-w-lg overflow-hidden box-border">
                <span className="material-symbols-outlined text-4xl md:text-5xl text-secondary mb-4">bedtime</span>
                <h2 className="text-xl md:text-2xl font-serif font-bold mb-2">Resting for Tomorrow</h2>
-               <p className="text-sm md:text-lg text-secondary leading-relaxed px-2">Our online kitchen is currently closed for orders. We'll be back at 9:00 AM!</p>
+               <p className="text-sm md:text-lg text-secondary leading-relaxed px-2">Our online kitchen is closed. <br className="sm:hidden" /> We'll be back at 9:00 AM!</p>
             </div>
           )}
 
@@ -79,20 +79,22 @@ export default function OrderOnline() {
           {/* ... (Existing mobile categories nav) ... */}
 
           {/* Mobile Category Nav */}
-          <div className="flex lg:hidden overflow-x-auto gap-4 mb-8 pb-4 scrollbar-hide border-b border-surface-container-high">
-             {tabs.map(tab => (
-              <button 
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeTab === tab ? 'bg-primary text-white' : 'bg-surface-container-low text-secondary'}`}
-              >
-                {tab}
-              </button>
-            ))}
+          <div className="lg:hidden w-full overflow-hidden mb-8 border-b border-surface-container-high">
+            <div className="flex overflow-x-auto gap-4 pb-4 scrollbar-hide">
+               {tabs.map(tab => (
+                <button 
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeTab === tab ? 'bg-primary text-white' : 'bg-surface-container-low text-secondary'}`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-full">
             {filteredItems.map(item => (
               <div key={item.id} className="bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between group hover:shadow-md transition-shadow border border-surface-container-low">
                 <div>
@@ -159,5 +161,6 @@ export default function OrderOnline() {
         </div>
       </section>
     </main>
+
   );
 }
