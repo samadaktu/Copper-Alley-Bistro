@@ -24,16 +24,16 @@ export default function OrderOnline() {
   };
 
   return (
-    <main className="pt-24 min-h-screen bg-surface flex">
+    <main className="pt-24 min-h-screen bg-surface flex max-w-[1440px] mx-auto relative px-8 gap-8">
       {/* Left Sidebar Category Nav (Desktop) */}
-      <aside className="w-64 hidden lg:block fixed h-screen border-r border-surface-container-high pt-12 px-8 z-30">
-        <h3 className="font-serif font-bold text-xl mb-8">Categories</h3>
-        <ul className="space-y-4">
+      <aside className="w-64 hidden lg:block sticky top-32 h-[calc(100vh-140px)] border-r border-surface-container-high pt-12 pr-8 shrink-0 overflow-y-auto scrollbar-hide pb-20">
+        <h3 className="font-serif font-bold text-xl mb-10 text-on-surface">Categories</h3>
+        <ul className="space-y-6">
           {tabs.map(tab => (
             <li key={tab}>
               <button 
                 onClick={() => setActiveTab(tab)}
-                className={`text-lg transition-colors ${activeTab === tab ? 'text-primary font-bold' : 'text-secondary hover:text-on-surface'}`}
+                className={`text-lg transition-all duration-300 whitespace-nowrap block w-full text-left ${activeTab === tab ? 'text-primary font-bold translate-x-2' : 'text-secondary hover:text-on-surface hover:translate-x-1'}`}
               >
                 {tab}
               </button>
@@ -43,7 +43,9 @@ export default function OrderOnline() {
       </aside>
 
       {/* Main Content */}
-      <section className="flex-1 lg:ml-64 px-8 pt-12 pb-32">
+      <section className="flex-1 pt-12 pb-32">
+
+
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-end mb-12 border-b border-surface-container-high pb-6">
             <div>
