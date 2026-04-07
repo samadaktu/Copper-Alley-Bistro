@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { menuData } from '../data/menuData';
 
 export default function Home() {
   const { addToCart } = useCart();
+  const [activeTab, setActiveTab] = useState('A La Carte');
 
   const handleAddToCart = (e, item) => {
     e.preventDefault();
@@ -11,12 +13,29 @@ export default function Home() {
     addToCart(item);
   };
 
+  const menuCategories = ['A La Carte', 'Breakfast', 'Burgers', 'Salads'];
+  
+  const getFilteredItems = () => {
+    const categoryMap = {
+      'A La Carte': 'Mains',
+      'Breakfast': 'Breakfast',
+      'Burgers': 'Burgers',
+      'Salads': 'Salads'
+    };
+    
+    return menuData
+      .filter(item => item.category === categoryMap[activeTab])
+      .slice(0, 4); // Display top 4 items for the preview
+  };
+
+  const filteredItems = getFilteredItems();
+
   return (
     <main className="pt-[88px]">
       {/* Hero Section */}
       <section className="relative min-h-[870px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover brightness-50" alt="Luxurious dark wood restaurant interior with warm ambient lighting, copper accents, and elegantly set tables in a historic Dublin building" src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=2000"/>
+          <img className="w-full h-full object-cover brightness-50" alt="Luxurious dark wood restaurant interior with warm ambient lighting, copper accents, and elegantly set tables in a historic Dublin building" src="/Banner-image.webp"/>
           <div className="absolute inset-0 bg-gradient-to-r from-[#1c1c1a]/80 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 w-full">
@@ -92,9 +111,9 @@ export default function Home() {
             {/* Dish Card 1 */}
             <div className="group relative">
               <div className="relative overflow-hidden mb-6 rounded-xl aspect-[4/5] cursor-pointer">
-                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Crispy golden Atlantic beer-bathed fish served with thick-cut triple-cooked chips, pea purée, and a wedge of lemon on a ceramic plate" src="https://images.unsplash.com/photo-1580476262798-badd96689d4c?auto=format&fit=crop&q=80&w=600"/>
+                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Crispy golden Atlantic beer-bathed fish served with thick-cut triple-cooked chips, pea purée, and a wedge of lemon on a ceramic plate" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd679?auto=format&fit=crop&q=80&w=1200"/>
                 <button 
-                  onClick={(e) => handleAddToCart(e, { id: 'm6', name: 'Atlantic Fish & Chips', price: 21, image: 'https://images.unsplash.com/photo-1580476262798-badd96689d4c?auto=format&fit=crop&q=80&w=600' })}
+                  onClick={(e) => handleAddToCart(e, { id: 'm6', name: 'Atlantic Fish & Chips', price: 21, image: 'https://images.unsplash.com/photo-1594041680534-e8c8cdebd679?auto=format&fit=crop&q=80&w=600' })}
                   className="absolute bottom-6 right-6 bg-surface p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container z-20">
                   <span className="material-symbols-outlined text-primary group-hover:text-primary">add_shopping_cart</span>
                 </button>
@@ -110,9 +129,9 @@ export default function Home() {
             {/* Dish Card 2 */}
             <div className="group relative">
               <div className="relative overflow-hidden mb-6 rounded-xl aspect-[4/5] cursor-pointer">
-                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Rich dark beef stew with chunks of tender meat, carrots, and potatoes in a thick Guinness gravy served in a black cast iron pot" src="https://images.unsplash.com/photo-1514516875932-a55e2d1d0c2e?auto=format&fit=crop&q=80&w=600"/>
+                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Rich dark beef stew with chunks of tender meat, carrots, and potatoes in a thick Guinness gravy served in a black cast iron pot" src="https://images.unsplash.com/photo-1534440058948-3fd16f1c192c?auto=format&fit=crop&q=80&w=1200"/>
                 <button 
-                  onClick={(e) => handleAddToCart(e, { id: 'm4', name: 'Guinness Beef Stew', price: 19, image: 'https://images.unsplash.com/photo-1514516875932-a55e2d1d0c2e?auto=format&fit=crop&q=80&w=600' })}
+                  onClick={(e) => handleAddToCart(e, { id: 'm4', name: 'Guinness Beef Stew', price: 19, image: 'https://images.unsplash.com/photo-1534440058948-3fd16f1c192c?auto=format&fit=crop&q=80&w=600' })}
                   className="absolute bottom-6 right-6 bg-surface p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container z-20">
                   <span className="material-symbols-outlined text-primary group-hover:text-primary">add_shopping_cart</span>
                 </button>
@@ -152,7 +171,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div className="relative">
             <div className="aspect-[4/5] bg-surface-container-high relative z-10">
-              <img className="w-full h-full object-cover shadow-2xl" alt="Black and white historical photograph of 13th-century Copper Alley in Dublin with cobblestones and old stone buildings" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=600"/>
+              <img className="w-full h-full object-cover shadow-2xl" alt="Classic elegant interior of Copper Alley Bistro with vintage copper accents and warm lighting" src="/about-us.webp"/>
             </div>
             <div className="absolute -bottom-12 -right-12 w-3/4 aspect-square bg-primary-container/10 -z-0"></div>
           </div>
@@ -179,40 +198,40 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-8 text-center">
           <h2 className="text-5xl font-bold mb-12">Explore Our Menus</h2>
           <div className="flex flex-wrap justify-center gap-4 mb-16 border-b border-surface-container-high pb-4">
-            <button className="px-8 py-2 text-primary border-b-2 border-primary font-bold">A La Carte</button>
-            <button className="px-8 py-2 text-secondary hover:text-on-surface font-medium transition-colors">Breakfast</button>
-            <button className="px-8 py-2 text-secondary hover:text-on-surface font-medium transition-colors">Burgers</button>
-            <button className="px-8 py-2 text-secondary hover:text-on-surface font-medium transition-colors">Salads</button>
+            {menuCategories.map((tab) => (
+              <button 
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-8 py-2 transition-all duration-300 font-bold ${
+                  activeTab === tab 
+                    ? 'text-primary border-b-2 border-primary' 
+                    : 'text-secondary hover:text-on-surface font-medium'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 text-left">
-            <div className="flex justify-between items-start group">
-              <div className="max-w-[80%]">
-                <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Wicklow Lamb Shank</h4>
-                <p className="text-sm text-secondary">Slow-roasted with rosemary and garlic, served on creamy colcannon mash</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 text-left min-h-[300px]">
+            {filteredItems.map((item, index) => (
+              <div 
+                key={item.id} 
+                className="flex justify-between items-start group animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="max-w-[80%]">
+                  <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors cursor-default">{item.name}</h4>
+                  <p className="text-sm text-secondary line-clamp-2">{item.description}</p>
+                </div>
+                <span className="text-primary font-bold text-lg">€{item.price.toFixed(2)}</span>
               </div>
-              <span className="text-primary font-bold">€26</span>
-            </div>
-            <div className="flex justify-between items-start group">
-              <div className="max-w-[80%]">
-                <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Pan-Seared Salmon</h4>
-                <p className="text-sm text-secondary">Sustainably sourced, with wild samphire and a lemon-butter reduction</p>
-              </div>
-              <span className="text-primary font-bold">€24</span>
-            </div>
-            <div className="flex justify-between items-start group">
-              <div className="max-w-[80%]">
-                <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Connemara Mussels</h4>
-                <p className="text-sm text-secondary">Steamed in white wine and garlic cream, served with crusty sourdough</p>
-              </div>
-              <span className="text-primary font-bold">€18</span>
-            </div>
-            <div className="flex justify-between items-start group">
-              <div className="max-w-[80%]">
-                <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Mushroom Risotto</h4>
-                <p className="text-sm text-secondary">Wild foraged mushrooms, truffle oil, and aged parmesan</p>
-              </div>
-              <span className="text-primary font-bold">€20</span>
-            </div>
+            ))}
+          </div>
+          <div className="mt-16">
+            <Link to="/menu" className="bg-primary/5 hover:bg-primary/10 text-primary px-8 py-3 rounded-full font-bold transition-all inline-flex items-center gap-2">
+              View Full {activeTab} Menu
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
           </div>
         </div>
       </section>

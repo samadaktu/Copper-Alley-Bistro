@@ -27,7 +27,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div className="relative">
               <div className="aspect-[4/5] bg-surface-container overflow-hidden rounded-xl shadow-sm">
-                <img className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-700 hover:scale-105" alt="Vintage atmospheric photo of a cobblestone Dublin alleyway with historic stone buildings and soft evening fog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3IWJ2GNh1NDz2kA6tbCUL_WBxPr6NLy2VY1kZYC4Y66XrN72M4YSq3LD5v0AJHmArHXE5uvnb6NNmEYbZGR9u3cuI9D4X1KtitHjefQAA8RgaE55-yDeuA-PJ0-FcZm5QyNNK6xLwSQyhYS5o8_35-SWklzdVRvSOTxetRg3CJDryXvnz3iOPzxwV8ZFDi10HCbE8ErqWTRDYKT_rFGv1ZP9Z9cPGy_th4faRQEd2pNeSJvSKEZTGa3pMtmB8od1t0ZKnhkDjJLU"/>
+                <img className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-700 hover:scale-105" alt="Vintage atmospheric photo of a cobblestone Dublin alleyway with historic stone buildings and soft evening fog" src="https://images.unsplash.com/photo-1590159746766-72d73347f3ae?auto=format&fit=crop&q=80&w=1200"/>
               </div>
               <div className="absolute -bottom-10 -right-10 hidden lg:block w-64 p-8 bg-surface shadow-xl rounded-lg">
                 <p className="text-sm italic font-serif text-secondary leading-relaxed">
@@ -64,17 +64,17 @@ export default function About() {
           {/* Bento Grid Interior */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
             <div className="md:col-span-8 group overflow-hidden rounded-xl relative">
-              <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Interior of a luxury bistro featuring a magnificent hand-beaten copper bar top with warm golden ambient lighting and dark wood shelves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO_HBN3RXYqWZSuTsuT_iulW3wJNJFUUlijMvXBncNot73nMr4FtZZwZxWgEihuYIzxsy1DD-itMqqsIUGNH5f5K8xZpkcl6Qjn4W5gAuOy1GyWQFh7-MIJZ7aFuD1KCcFTYlaqpyeTd0xEohNXiutMOkZe2jrbEmCjZpLB856JC63R7cJFbEpHn9WrExvNYrwlNycytJ66girdQ5rCSKTu1d_UiOd2_uefHT92VQYvBiW1mYt7XUocZiJ_VgAtNBJ1SKfuM70GJ0"/>
+              <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Interior of a luxury bistro featuring a magnificent hand-beaten copper bar top with warm golden ambient lighting and dark wood shelves" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200"/>
               <div className="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
                 <p className="text-white font-serif italic text-xl">The Copper-Clad Heart</p>
               </div>
             </div>
             <div className="md:col-span-4 grid grid-rows-2 gap-6">
               <div className="group overflow-hidden rounded-xl relative">
-                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Close-up of cozy leather booth seating in a dim restaurant with warm candlelight and rustic stone walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwbVArrOSJmWadrr9zKsL1af27yu70YRBK871GmutFe0eVCPu0imBlbX-8XDKZvgNbISAZ1Q9clxvydedappAkHvBYkoOjUkvaxCCJpCv4fVu7dlhNbf79QNdpOck1CRzr1ROfb8RX-EiQ3GBM_kvgQlPQfiKDliQPzT2otkF5fI8uRagtbRtWUmvPOmstm2DA3G5Is6UUilZMmhjhltswvLrfbQYj-RLgBx7rY6bU82NLa8eeJciOJBoR7HFiwej6uviUSAc0JQg"/>
+                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Close-up of cozy leather booth seating in a dim restaurant with warm candlelight and rustic stone walls" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200"/>
               </div>
               <div className="group overflow-hidden rounded-xl relative">
-                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Close-up of a perfectly crafted cocktail in a crystal glass sitting on a textured copper coaster with soft bokeh light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsby1K4Z6GDVuuDm1nUiAAY4KfzMBBGwTlaUSELF6BSmJoWipB0ELAWRuLPYBJsl2EhOfEerlfCuGwhuXgJHxQuzWAxuEx5sCqlSCgWNN09e7YLDMgbSVJT8cf-mA4R7AvPsufhPtTI9EWgR8ypKOnAihTWaVoyLPsJui27RRzso2HWrm0ZEPyF-ethjyo0DGWBP4u1AUVuo-OULcctyJ_DWmS0FrKndH7lk_KGJTGDg1vuIO5TjKDvIv0cPQiWxyZXc6SkywWHg0"/>
+                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Close-up of a perfectly crafted cocktail in a crystal glass sitting on a textured copper coaster with soft bokeh light" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1200"/>
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function About() {
             <div className="w-full lg:w-1/2">
               <div className="relative">
                 <div className="aspect-square bg-surface-dim rounded-2xl overflow-hidden border-[12px] border-surface">
-                  <img className="w-full h-full object-cover" alt="Portrait of Chef Sean O'Connor in a professional white chef coat looking thoughtfully at a fresh sprig of herbs in a dimly lit kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkYHNDb_MgyYSxsIliWcAcN_3jmaiFdBgVXjbNwUUU8Es7S6VD9gUg17mpd43B-Jxvt4hRWnZxlGyL9WfksGjv36g9dVOE9UvtNYe_9VbWAN711fpgN8N_fi0mPSaHvhx0OQwlre8P5C6q5k1WuzPNIjtlMsbDvVlgO-PjsSuKiD7e3s5H2WUqrM8PFUazUpLLcu0nhE4EfIYHguZAQX0s524g3EDrDhvZIGbsKBbb2TpteuoB7-D0PDhT_2Ca48dlpTT5tvvXK90"/>
+                  <img className="w-full h-full object-cover" alt="Portrait of Chef Sean O'Connor in a professional white chef coat looking thoughtfully at a fresh sprig of herbs in a dimly lit kitchen" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=1200"/>
                 </div>
                 <div className="absolute -top-6 -left-6 bg-primary text-white p-6 rounded-lg shadow-2xl hidden md:block">
                   <span className="font-serif italic text-2xl">Chef de Cuisine</span>
