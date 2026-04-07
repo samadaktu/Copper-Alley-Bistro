@@ -1,41 +1,94 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 
 const OrderContext = createContext();
 
 export function OrderProvider({ children }) {
-  const [orders, setOrders] = useState(() => {
-    const savedOrders = localStorage.getItem('bistro_orders');
-    return savedOrders ? JSON.parse(savedOrders) : [];
-  });
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch orders from Supabase
   useEffect(() => {
-    localStorage.setItem('bistro_orders', JSON.stringify(orders));
-  }, [orders]);
+    async function fetchOrders() {
+      try {
+        const { data, error } = await supabase
+          .from('orders')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-  const placeOrder = (orderData) => {
-    const newOrder = {
-      ...orderData,
-      id: `ORD_${Date.now()}`,
-      status: 'pending',
-      createdAt: new Date().toISOString()
+        if (error) throw error;
+        setOrders(data || []);
+      } catch (err) {
+        console.error("Error fetching orders:", err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchOrders();
+
+    // Subscribe to realtime updates
+    const subscription = supabase
+      .channel('public:orders')
+      .on('postgres_changes', { event: '*', table: 'orders' }, fetchOrders)
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
     };
-    setOrders(prev => [newOrder, ...prev]);
-    return newOrder;
+  }, []);
+
+  const placeOrder = async (orderData) => {
+    const { data, error } = await supabase
+      .from('orders')
+      .insert([orderData])
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Error placing order:", error);
+      throw error;
+    }
+    
+    // fetchOrders will be triggered by subscription, but we can also update state manually for speed
+    setOrders(prev => [data, ...prev]);
+    return data;
   };
 
-  const updateOrderStatus = (id, status) => {
+  const updateOrderStatus = async (id, status) => {
+    const { error } = await supabase
+      .from('orders')
+      .update({ status })
+      .eq('id', id);
+
+    if (error) {
+      console.error("Error updating order status:", error);
+      return;
+    }
+
     setOrders(prev => prev.map(order => 
       order.id === id ? { ...order, status } : order
     ));
   };
 
-  const deleteOrder = (id) => {
+  const deleteOrder = async (id) => {
+    const { error } = await supabase
+      .from('orders')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error("Error deleting order:", error);
+      return;
+    }
+
     setOrders(prev => prev.filter(order => order.id !== id));
   };
 
   return (
     <OrderContext.Provider value={{
       orders,
+      loading,
       placeOrder,
       updateOrderStatus,
       deleteOrder
@@ -52,3 +105,4 @@ export function useOrders() {
   }
   return context;
 }
+

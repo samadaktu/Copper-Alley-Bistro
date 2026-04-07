@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { menuData } from '../data/menuData';
+import { useMenu } from '../context/MenuContext';
 import { useCart } from '../context/CartContext';
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const { menuItems, loading } = useMenu();
   const { addToCart } = useCart();
 
   // Define the ordered tabs available
   const tabs = ['All', 'Breakfast', 'Starters', 'Sandwiches', 'Mains', 'Burgers', 'Salads', 'Sides'];
 
   const filteredItems = activeCategory === 'All' 
-    ? menuData 
-    : menuData.filter(item => item.category === activeCategory);
+    ? menuItems 
+    : menuItems.filter(item => item.category === activeCategory);
+
 
   return (
     <main className="pt-24 min-h-screen bg-surface">

@@ -1,41 +1,105 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 
 const BookingContext = createContext();
 
 export function BookingProvider({ children }) {
-  const [bookings, setBookings] = useState(() => {
-    const savedBookings = localStorage.getItem('bistro_bookings');
-    return savedBookings ? JSON.parse(savedBookings) : [];
-  });
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch bookings from Supabase
   useEffect(() => {
-    localStorage.setItem('bistro_bookings', JSON.stringify(bookings));
-  }, [bookings]);
+    async function fetchBookings() {
+      try {
+        const { data, error } = await supabase
+          .from('bookings')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-  const addBooking = (bookingData) => {
-    const newBooking = {
-      ...bookingData,
-      id: `BK_${Date.now()}`,
-      status: 'pending',
-      createdAt: new Date().toISOString()
+        if (error) throw error;
+        setBookings(data || []);
+      } catch (err) {
+        console.error("Error fetching bookings:", err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchBookings();
+
+    // Subscribe to realtime updates
+    const subscription = supabase
+      .channel('public:bookings')
+      .on('postgres_changes', { event: '*', table: 'bookings' }, fetchBookings)
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
     };
-    setBookings(prev => [newBooking, ...prev]);
-    return newBooking;
+  }, []);
+
+  const addBooking = async (bookingData) => {
+    // Map camcelCase to snake_case for the database
+    const dbBooking = {
+      full_name: bookingData.fullName,
+      email: bookingData.email,
+      phone: bookingData.phone,
+      date: bookingData.date,
+      time: bookingData.time,
+      guests: bookingData.guests,
+      requests: bookingData.requests,
+      status: 'pending'
+    };
+
+    const { data, error } = await supabase
+      .from('bookings')
+      .insert([dbBooking])
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Error adding booking:", error);
+      throw error;
+    }
+    
+    setBookings(prev => [data, ...prev]);
+    return data;
   };
 
-  const updateBookingStatus = (id, status) => {
+  const updateBookingStatus = async (id, status) => {
+    const { error } = await supabase
+      .from('bookings')
+      .update({ status })
+      .eq('id', id);
+
+    if (error) {
+      console.error("Error updating booking status:", error);
+      return;
+    }
+
     setBookings(prev => prev.map(booking => 
       booking.id === id ? { ...booking, status } : booking
     ));
   };
 
-  const deleteBooking = (id) => {
+  const deleteBooking = async (id) => {
+    const { error } = await supabase
+      .from('bookings')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error("Error deleting booking:", error);
+      return;
+    }
+
     setBookings(prev => prev.filter(booking => booking.id !== id));
   };
 
   return (
     <BookingContext.Provider value={{
       bookings,
+      loading,
       addBooking,
       updateBookingStatus,
       deleteBooking
@@ -52,3 +116,4 @@ export function useBookings() {
   }
   return context;
 }
+

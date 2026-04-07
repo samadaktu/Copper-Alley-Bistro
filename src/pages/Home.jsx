@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { menuData } from '../data/menuData';
+import { useMenu } from '../context/MenuContext';
 
 export default function Home() {
   const { addToCart } = useCart();
+  const { menuItems, loading } = useMenu();
   const [activeTab, setActiveTab] = useState('A La Carte');
 
   const handleAddToCart = (e, item) => {
@@ -23,12 +24,13 @@ export default function Home() {
       'Salads': 'Salads'
     };
     
-    return menuData
+    return menuItems
       .filter(item => item.category === categoryMap[activeTab])
       .slice(0, 4); // Display top 4 items for the preview
   };
 
   const filteredItems = getFilteredItems();
+
 
   return (
     <main className="pt-[88px]">
