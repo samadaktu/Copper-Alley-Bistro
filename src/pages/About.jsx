@@ -27,7 +27,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div className="relative">
               <div className="aspect-[4/5] bg-surface-container overflow-hidden rounded-xl shadow-sm">
-                <img className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-700 hover:scale-105" alt="Vintage atmospheric photo of a cobblestone Dublin alleyway with historic stone buildings and soft evening fog" src="https://images.unsplash.com/photo-1590159746766-72d73347f3ae?auto=format&fit=crop&q=80&w=1200"/>
+                <img className="w-full h-full object-cover grayscale opacity-90 transition-transform duration-700 hover:scale-105" alt="Vintage atmospheric photo of a cobblestone Dublin alleyway with historic stone buildings and soft evening fog" src="/public/about-us.webp"/>
               </div>
               <div className="absolute -bottom-10 -right-10 hidden lg:block w-64 p-8 bg-surface shadow-xl rounded-lg">
                 <p className="text-sm italic font-serif text-secondary leading-relaxed">

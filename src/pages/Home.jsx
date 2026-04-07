@@ -113,7 +113,7 @@ export default function Home() {
               <div className="relative overflow-hidden mb-6 rounded-xl aspect-[4/5] cursor-pointer">
                 <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Crispy golden Atlantic beer-bathed fish served with thick-cut triple-cooked chips, pea purée, and a wedge of lemon on a ceramic plate" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd679?auto=format&fit=crop&q=80&w=1200"/>
                 <button 
-                  onClick={(e) => handleAddToCart(e, { id: 'm6', name: 'Atlantic Fish & Chips', price: 21, image: 'https://images.unsplash.com/photo-1594041680534-e8c8cdebd679?auto=format&fit=crop&q=80&w=600' })}
+                  onClick={(e) => handleAddToCart(e, { id: 'm6', name: 'Atlantic Fish & Chips', price: 21, image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=600' })}
                   className="absolute bottom-6 right-6 bg-surface p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container z-20">
                   <span className="material-symbols-outlined text-primary group-hover:text-primary">add_shopping_cart</span>
                 </button>
@@ -131,7 +131,7 @@ export default function Home() {
               <div className="relative overflow-hidden mb-6 rounded-xl aspect-[4/5] cursor-pointer">
                 <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Rich dark beef stew with chunks of tender meat, carrots, and potatoes in a thick Guinness gravy served in a black cast iron pot" src="https://images.unsplash.com/photo-1534440058948-3fd16f1c192c?auto=format&fit=crop&q=80&w=1200"/>
                 <button 
-                  onClick={(e) => handleAddToCart(e, { id: 'm4', name: 'Guinness Beef Stew', price: 19, image: 'https://images.unsplash.com/photo-1534440058948-3fd16f1c192c?auto=format&fit=crop&q=80&w=600' })}
+                  onClick={(e) => handleAddToCart(e, { id: 'm4', name: 'Guinness Beef Stew', price: 19, image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=600' })}
                   className="absolute bottom-6 right-6 bg-surface p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container z-20">
                   <span className="material-symbols-outlined text-primary group-hover:text-primary">add_shopping_cart</span>
                 </button>
