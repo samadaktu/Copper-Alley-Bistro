@@ -3,8 +3,12 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error("Supabase credentials missing. Please check your .env file.");
+// Only initialize if we have credentials, to prevent app crash on missing env vars
+export const supabase = (supabaseUrl && supabaseAnonKey) 
+  ? createClient(supabaseUrl, supabaseAnonKey) 
+  : null;
+
+if (!supabase) {
+  console.warn("Supabase credentials missing. App will fallback to local/static data.");
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);

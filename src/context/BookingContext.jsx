@@ -10,6 +10,12 @@ export function BookingProvider({ children }) {
   // Fetch bookings from Supabase
   useEffect(() => {
     async function fetchBookings() {
+      if (!supabase) {
+        console.warn("Supabase client not initialized. Falling back to local/memory booking state.");
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data, error } = await supabase
           .from('bookings')
@@ -24,6 +30,7 @@ export function BookingProvider({ children }) {
         setLoading(false);
       }
     }
+
 
     fetchBookings();
 
@@ -51,30 +58,38 @@ export function BookingProvider({ children }) {
       status: 'pending'
     };
 
-    const { data, error } = await supabase
-      .from('bookings')
-      .insert([dbBooking])
-      .select()
-      .single();
+    if (supabase) {
+      const { data, error } = await supabase
+        .from('bookings')
+        .insert([dbBooking])
+        .select()
+        .single();
 
-    if (error) {
-      console.error("Error adding booking:", error);
-      throw error;
+      if (error) {
+        console.error("Error adding booking:", error);
+        throw error;
+      }
+      
+      setBookings(prev => [data, ...prev]);
+      return data;
+    } else {
+      const localBooking = { ...dbBooking, id: `local_${Date.now()}`, created_at: new Date().toISOString() };
+      setBookings(prev => [localBooking, ...prev]);
+      return localBooking;
     }
-    
-    setBookings(prev => [data, ...prev]);
-    return data;
   };
 
   const updateBookingStatus = async (id, status) => {
-    const { error } = await supabase
-      .from('bookings')
-      .update({ status })
-      .eq('id', id);
+    if (supabase) {
+      const { error } = await supabase
+        .from('bookings')
+        .update({ status })
+        .eq('id', id);
 
-    if (error) {
-      console.error("Error updating booking status:", error);
-      return;
+      if (error) {
+        console.error("Error updating booking status:", error);
+        return;
+      }
     }
 
     setBookings(prev => prev.map(booking => 
@@ -83,18 +98,21 @@ export function BookingProvider({ children }) {
   };
 
   const deleteBooking = async (id) => {
-    const { error } = await supabase
-      .from('bookings')
-      .delete()
-      .eq('id', id);
+    if (supabase) {
+      const { error } = await supabase
+        .from('bookings')
+        .delete()
+        .eq('id', id);
 
-    if (error) {
-      console.error("Error deleting booking:", error);
-      return;
+      if (error) {
+        console.error("Error deleting booking:", error);
+        return;
+      }
     }
 
     setBookings(prev => prev.filter(booking => booking.id !== id));
   };
+
 
   return (
     <BookingContext.Provider value={{

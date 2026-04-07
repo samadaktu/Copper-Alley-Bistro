@@ -11,6 +11,13 @@ export function MenuProvider({ children }) {
   // Fetch menu from Supabase
   useEffect(() => {
     async function fetchMenu() {
+      if (!supabase) {
+        console.warn("Supabase client not initialized. Falling back to local menu data.");
+        setMenuItems(initialMenu);
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data, error } = await supabase
           .from('menu')
@@ -18,6 +25,7 @@ export function MenuProvider({ children }) {
           .order('created_at', { ascending: true });
 
         if (error) throw error;
+
 
         if (data && data.length > 0) {
           setMenuItems(data);
@@ -50,10 +58,12 @@ export function MenuProvider({ children }) {
       price: parseFloat(item.price)
     };
     
-    const { error } = await supabase.from('menu').insert([newItem]);
-    if (error) {
-      console.error("Error adding menu item:", error);
-      return;
+    if (supabase) {
+      const { error } = await supabase.from('menu').insert([newItem]);
+      if (error) {
+        console.error("Error adding menu item:", error);
+        return;
+      }
     }
     setMenuItems(prev => [...prev, newItem]);
   };
@@ -64,14 +74,16 @@ export function MenuProvider({ children }) {
       price: parseFloat(updatedItem.price) 
     };
 
-    const { error } = await supabase
-      .from('menu')
-      .update(formattedItem)
-      .eq('id', id);
+    if (supabase) {
+      const { error } = await supabase
+        .from('menu')
+        .update(formattedItem)
+        .eq('id', id);
 
-    if (error) {
-      console.error("Error updating menu item:", error);
-      return;
+      if (error) {
+        console.error("Error updating menu item:", error);
+        return;
+      }
     }
 
     setMenuItems(prev => prev.map(item => 
@@ -80,18 +92,21 @@ export function MenuProvider({ children }) {
   };
 
   const deleteMenuItem = async (id) => {
-    const { error } = await supabase
-      .from('menu')
-      .delete()
-      .eq('id', id);
+    if (supabase) {
+      const { error } = await supabase
+        .from('menu')
+        .delete()
+        .eq('id', id);
 
-    if (error) {
-      console.error("Error deleting menu item:", error);
-      return;
+      if (error) {
+        console.error("Error deleting menu item:", error);
+        return;
+      }
     }
 
     setMenuItems(prev => prev.filter(item => item.id !== id));
   };
+
 
   return (
     <MenuContext.Provider value={{

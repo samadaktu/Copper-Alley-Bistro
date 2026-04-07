@@ -10,6 +10,12 @@ export function OrderProvider({ children }) {
   // Fetch orders from Supabase
   useEffect(() => {
     async function fetchOrders() {
+      if (!supabase) {
+        console.warn("Supabase client not initialized. Falling back to local/memory order state.");
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data, error } = await supabase
           .from('orders')
@@ -25,6 +31,7 @@ export function OrderProvider({ children }) {
       }
     }
 
+
     fetchOrders();
 
     // Subscribe to realtime updates
@@ -39,31 +46,38 @@ export function OrderProvider({ children }) {
   }, []);
 
   const placeOrder = async (orderData) => {
-    const { data, error } = await supabase
-      .from('orders')
-      .insert([orderData])
-      .select()
-      .single();
+    if (supabase) {
+      const { data, error } = await supabase
+        .from('orders')
+        .insert([orderData])
+        .select()
+        .single();
 
-    if (error) {
-      console.error("Error placing order:", error);
-      throw error;
+      if (error) {
+        console.error("Error placing order:", error);
+        throw error;
+      }
+      
+      setOrders(prev => [data, ...prev]);
+      return data;
+    } else {
+      const localOrder = { ...orderData, id: `local_${Date.now()}`, status: 'pending', created_at: new Date().toISOString() };
+      setOrders(prev => [localOrder, ...prev]);
+      return localOrder;
     }
-    
-    // fetchOrders will be triggered by subscription, but we can also update state manually for speed
-    setOrders(prev => [data, ...prev]);
-    return data;
   };
 
   const updateOrderStatus = async (id, status) => {
-    const { error } = await supabase
-      .from('orders')
-      .update({ status })
-      .eq('id', id);
+    if (supabase) {
+      const { error } = await supabase
+        .from('orders')
+        .update({ status })
+        .eq('id', id);
 
-    if (error) {
-      console.error("Error updating order status:", error);
-      return;
+      if (error) {
+        console.error("Error updating order status:", error);
+        return;
+      }
     }
 
     setOrders(prev => prev.map(order => 
@@ -72,18 +86,21 @@ export function OrderProvider({ children }) {
   };
 
   const deleteOrder = async (id) => {
-    const { error } = await supabase
-      .from('orders')
-      .delete()
-      .eq('id', id);
+    if (supabase) {
+      const { error } = await supabase
+        .from('orders')
+        .delete()
+        .eq('id', id);
 
-    if (error) {
-      console.error("Error deleting order:", error);
-      return;
+      if (error) {
+        console.error("Error deleting order:", error);
+        return;
+      }
     }
 
     setOrders(prev => prev.filter(order => order.id !== id));
   };
+
 
   return (
     <OrderContext.Provider value={{
