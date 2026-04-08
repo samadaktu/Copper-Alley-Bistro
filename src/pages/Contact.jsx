@@ -44,9 +44,8 @@ export default function Contact() {
               <div className="bg-surface-container-low p-6 rounded-2xl border border-surface-container hover:shadow-md transition-shadow">
                 <span className="material-symbols-outlined text-3xl text-primary mb-4">schedule</span>
                 <h3 className="font-bold text-xl mb-2">Hours</h3>
-                <p className="text-secondary mb-1">Mon - Thurs: 12pm - 10pm</p>
-                <p className="text-secondary mb-1">Fri - Sat: 12pm - 11pm</p>
-                <p className="text-secondary">Sun: 9am - 9pm</p>
+                <p className="text-secondary mb-1">Mon - Sun: 8am - 10pm</p>
+                <p className="text-secondary">Breakfast / Brunch / Dinner</p>
               </div>
 
               <div className="bg-surface-container-low p-6 rounded-2xl border border-surface-container hover:shadow-md transition-shadow">

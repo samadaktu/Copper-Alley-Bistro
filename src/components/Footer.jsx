@@ -47,15 +47,15 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex justify-between md:justify-start md:gap-8 items-center border-b border-outline/10 pb-2">
                 <span className="text-xs text-[#857467] font-medium uppercase tracking-tighter">Mon - Thu</span>
-                <span className="text-sm text-[#c8c6c5]">12:00 - 22:00</span>
+                <span className="text-sm text-[#c8c6c5]">08:00 - 22:00</span>
               </div>
               <div className="flex justify-between md:justify-start md:gap-8 items-center border-b border-outline/10 pb-2">
                 <span className="text-xs text-[#857467] font-medium uppercase tracking-tighter">Fri - Sat</span>
-                <span className="text-sm text-[#c8c6c5]">11:30 - 23:00</span>
+                <span className="text-sm text-[#c8c6c5]">08:00 - 22:00</span>
               </div>
               <div className="flex justify-between md:justify-start md:gap-8 items-center">
                 <span className="text-xs text-[#857467] font-medium uppercase tracking-tighter">Sun</span>
-                <span className="text-sm text-[#c8c6c5]">11:30 - 21:00</span>
+                <span className="text-sm text-[#c8c6c5]">08:00 - 22:00</span>
               </div>
             </div>
           </div>

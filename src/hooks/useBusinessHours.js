@@ -7,17 +7,31 @@ export function useBusinessHours() {
   useEffect(() => {
     const checkStatus = () => {
       const now = new Date();
-      const hours = now.getHours();
+      // Get current hour in Dublin
+      const dublinHour = parseInt(new Intl.DateTimeFormat('en-GB', {
+        hour: 'numeric',
+        hour12: false,
+        timeZone: 'Europe/Dublin'
+      }).format(now));
       
-      // Open from 09:00 to 23:00 (11 PM)
-      const openHour = 9;
-      const closeHour = 23;
+      const day = new Intl.DateTimeFormat('en-GB', {
+        weekday: 'long',
+        timeZone: 'Europe/Dublin'
+      }).format(now);
 
-      if (hours >= openHour && hours < closeHour) {
+      // Dublin Opening Hours (Requested: 8am to 9pm):
+      const openHour = 8;
+      const closeHour = 22;
+
+      // current time in hours (with decimal minutes for accuracy)
+      const dublinMinutes = now.getMinutes() / 60;
+      const currentTime = dublinHour + dublinMinutes;
+
+      if (currentTime >= openHour && currentTime < closeHour) {
         setIsOpen(true);
       } else {
         setIsOpen(false);
-        setNextOpenTime('09:00 AM');
+        setNextOpenTime('08:00 AM');
       }
     };
 

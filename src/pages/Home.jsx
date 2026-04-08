@@ -55,9 +55,9 @@ export default function Home() {
                   <span className="material-symbols-outlined">calendar_today</span>
                 </button>
               </Link>
-              <Link to="/order" className="w-full sm:w-auto">
+              <Link to="/menu" className="w-full sm:w-auto">
                 <button className="w-full bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 border border-surface-container-lowest/30 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-bold text-lg transition-all">
-                  Order Online
+                  Menu
                 </button>
               </Link>
             </div>
@@ -114,9 +114,9 @@ export default function Home() {
             {/* Dish Card 1 */}
             <div className="group relative">
               <div className="relative overflow-hidden mb-6 rounded-xl aspect-[4/5] cursor-pointer">
-                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Crispy golden Atlantic beer-bathed fish served with thick-cut triple-cooked chips, pea purée, and a wedge of lemon on a ceramic plate" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd679?auto=format&fit=crop&q=80&w=1200"/>
+                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Crispy golden Atlantic beer-bathed fish served with thick-cut triple-cooked chips, pea purée, and a wedge of lemon on a ceramic plate" src="/images/dishes/fish-and-chips.png"/>
                 <button 
-                  onClick={(e) => handleAddToCart(e, { id: 'm6', name: 'Atlantic Fish & Chips', price: 21, image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=600' })}
+                  onClick={(e) => handleAddToCart(e, { id: 'm6', name: 'Atlantic Fish & Chips', price: 21, image: '/images/dishes/fish-and-chips.png' })}
                   className="absolute bottom-6 right-6 bg-surface p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container z-20">
                   <span className="material-symbols-outlined text-primary group-hover:text-primary">add_shopping_cart</span>
                 </button>
@@ -132,9 +132,9 @@ export default function Home() {
             {/* Dish Card 2 */}
             <div className="group relative">
               <div className="relative overflow-hidden mb-6 rounded-xl aspect-[4/5] cursor-pointer">
-                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Rich dark beef stew with chunks of tender meat, carrots, and potatoes in a thick Guinness gravy served in a black cast iron pot" src="https://images.unsplash.com/photo-1534440058948-3fd16f1c192c?auto=format&fit=crop&q=80&w=1200"/>
+                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Rich dark beef stew with chunks of tender meat, carrots, and potatoes in a thick Guinness gravy served in a black cast iron pot" src="/images/dishes/beef-guinness-stew.png"/>
                 <button 
-                  onClick={(e) => handleAddToCart(e, { id: 'm4', name: 'Guinness Beef Stew', price: 19, image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=600' })}
+                  onClick={(e) => handleAddToCart(e, { id: 'm4', name: 'Guinness Beef Stew', price: 19, image: '/images/dishes/beef-guinness-stew.png' })}
                   className="absolute bottom-6 right-6 bg-surface p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container z-20">
                   <span className="material-symbols-outlined text-primary group-hover:text-primary">add_shopping_cart</span>
                 </button>
@@ -150,9 +150,9 @@ export default function Home() {
             {/* Dish Card 3 */}
             <div className="group relative">
               <div className="relative overflow-hidden mb-6 rounded-xl aspect-[4/5] cursor-pointer">
-                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Premium dry-aged Irish sirloin steak cooked medium-rare, served with peppercorn sauce and grilled portobello mushroom" src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=600"/>
+                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Premium dry-aged Irish sirloin steak cooked medium-rare, served with peppercorn sauce and grilled portobello mushroom" src="/images/dishes/sirloin-steak.png"/>
                 <button 
-                  onClick={(e) => handleAddToCart(e, { id: 'm2', name: 'Dry-Aged Sirloin', price: 32, image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=600' })}
+                  onClick={(e) => handleAddToCart(e, { id: 'm2', name: 'Dry-Aged Sirloin', price: 32, image: '/images/dishes/sirloin-steak.png' })}
                   className="absolute bottom-6 right-6 bg-surface p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary-container hover:text-on-primary-container z-20">
                   <span className="material-symbols-outlined text-primary group-hover:text-primary">add_shopping_cart</span>
                 </button>
@@ -334,9 +334,8 @@ export default function Home() {
                 <span className="material-symbols-outlined text-primary mt-1">schedule</span>
                 <div>
                   <p className="font-bold text-xl">Opening Hours</p>
-                  <p className="text-on-surface-variant">Mon – Thu: 12:00 – 22:00</p>
-                  <p className="text-on-surface-variant">Fri – Sat: 11:30 – 23:00</p>
-                  <p className="text-on-surface-variant">Sun: 11:30 – 21:00</p>
+                  <p className="text-on-surface-variant">Mon – Sun: 08:00 – 22:00</p>
+                  <p className="text-on-surface-variant text-sm mt-1">Breakfast / Brunch / Dinner</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

@@ -54,10 +54,6 @@ export default function Navbar() {
               <span className="material-symbols-outlined text-primary text-xl">restaurant_menu</span>
               Menu
             </NavLink>
-            <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/order" onClick={() => setIsMobileMenuOpen(false)}>
-              <span className="material-symbols-outlined text-primary text-xl">shopping_cart_checkout</span>
-              Order Online
-            </NavLink>
             <NavLink className="px-4 py-3 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary/10 transition-colors flex items-center gap-3" to="/about" onClick={() => setIsMobileMenuOpen(false)}>
               <span className="material-symbols-outlined text-primary text-xl">auto_stories</span>
               About

@@ -8,7 +8,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { cartItems, cartTotal, clearCart } = useCart();
   const { placeOrder } = useOrders();
-  const { isOpen } = useBusinessHours();
+  const { isOpen, nextOpenTime } = useBusinessHours();
   const [deliveryMethod, setDeliveryMethod] = useState('collection');
   
   const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ export default function Checkout() {
     e.preventDefault();
     if (cartItems.length === 0) return;
     if (!isOpen) {
-      alert('Sorry, our online kitchen is currently closed (Restricted between 11 PM and 9 AM).');
+      alert('Sorry, our online kitchen is currently closed (Opening hours: 8:00 AM - 10:00 PM Dublin Time).');
       return;
     }
 
@@ -76,7 +76,27 @@ export default function Checkout() {
       <main className="pt-32 min-h-screen bg-surface flex flex-col items-center justify-center">
         <span className="material-symbols-outlined text-6xl text-surface-container-high mb-4">shopping_basket</span>
         <h1 className="text-3xl font-serif font-bold mb-4">Your basket is empty</h1>
-        <Link to="/order" className="text-primary font-bold hover:underline">Go to Menu</Link>
+        <Link to="/menu" className="text-primary font-bold hover:underline">Go to Menu</Link>
+      </main>
+    );
+  }
+
+  if (!isOpen) {
+    return (
+      <main className="pt-32 min-h-screen bg-surface flex flex-col items-center justify-center px-6 text-center">
+        <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+          <span className="material-symbols-outlined text-4xl text-primary font-bold">lock</span>
+        </div>
+        <h1 className="text-4xl font-serif font-bold mb-4 text-[#1c1c1a]">Kitchen is Currently Closed</h1>
+        <p className="text-lg text-secondary max-w-md mb-8">
+          Our online ordering system is active between <strong>8:00 AM</strong> and <strong>10:00 PM</strong> Dublin time.
+        </p>
+        <div className="bg-surface-container-low p-6 rounded-2xl border border-surface-container mb-8">
+          <p className="font-bold text-primary">Re-opening at {nextOpenTime}</p>
+        </div>
+        <Link to="/menu" className="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-container transition-all">
+          Back to Menu
+        </Link>
       </main>
     );
   }
@@ -85,9 +105,8 @@ export default function Checkout() {
     <main className="pt-24 min-h-screen bg-surface-container-low pb-24">
       <div className="max-w-6xl mx-auto px-8 flex flex-col lg:flex-row gap-12 mt-12">
         
-        {/* Left Side: Checkout Form */}
         <div className="flex-1">
-          <Link to="/order" className="inline-flex items-center gap-2 text-primary hover:text-primary-container font-medium mb-8 transition-colors">
+          <Link to="/menu" className="inline-flex items-center gap-2 text-primary hover:text-primary-container font-medium mb-8 transition-colors">
             <span className="material-symbols-outlined text-sm">arrow_back</span>
             Back to Menu
           </Link>

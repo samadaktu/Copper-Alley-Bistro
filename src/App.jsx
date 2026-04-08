@@ -8,7 +8,6 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Menu from './pages/Menu';
-import OrderOnline from './pages/OrderOnline';
 import BookTable from './pages/BookTable';
 import Checkout from './pages/Checkout';
 import Testimonials from './pages/Testimonials';
@@ -17,6 +16,8 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <MenuProvider>
@@ -24,12 +25,12 @@ function App() {
         <BookingProvider>
           <CartProvider>
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
                 <Route path="menu" element={<Menu />} />
-                <Route path="order" element={<OrderOnline />} />
                 <Route path="book" element={<BookTable />} />
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="testimonials" element={<Testimonials />} />

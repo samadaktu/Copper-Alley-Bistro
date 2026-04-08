@@ -7,7 +7,7 @@ export const menuData = [
     description: 'Served with traditional Irish soda bread, fresh herbs, and croutons',
     category: 'Breakfast',
     vegetarian: false,
-    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=600&auto=format&fit=crop'
+    image: '/images/dishes/seafood-chowder.png'
   },
   {
     id: 'b2',
@@ -16,7 +16,7 @@ export const menuData = [
     description: 'Sausages, bacon, black & white pudding, hash browns, grilled tomato, fried egg, baked beans, mushrooms',
     category: 'Breakfast',
     vegetarian: false,
-    image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=600&auto=format&fit=crop'
+    image: '/images/dishes/full-irish-breakfast.png'
   },
   {
     id: 'b3',
@@ -108,7 +108,7 @@ export const menuData = [
     description: 'Crispy fried chicken in a sticky sweet and spicy glaze',
     category: 'Starters',
     vegetarian: false,
-    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=600&auto=format&fit=crop'
+    image: '/images/dishes/korean-chicken.png'
   },
   {
     id: 's2',
@@ -193,7 +193,7 @@ export const menuData = [
     description: 'With sautéed onions, mushrooms, and choice of sauce',
     category: 'Mains',
     vegetarian: false,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAkrupAQzDLOw-iD_nxQm_IYJdGkZBO51eraANtm7jbOVuom22FZvyFV01Ew5ifYgC72xIQEisFfmeZMkLOSiKs5WSKtnttckZOuTwqAsifOuf4dZkjVkEEYI9ZzDOHdOOkBU8j4LZEgn1OJvjj25YbtIXn1dJEwgbsZSDYOlAqX4Z8pqb3KwmQkM9CptFAo5tgWgt5t8jw0OB-lRfkyXGCzjm6Cw5T8Sv-2g5zcaQmFZcLuqu45IIWcFWc23nYj-8WvIx9t3kcY5s'
+    image: '/images/dishes/sirloin-steak.png'
   },
   {
     id: 'm2',
@@ -220,7 +220,7 @@ export const menuData = [
     description: 'Slow-braised brisket, root vegetables, stout reduction, creamy mash',
     category: 'Mains',
     vegetarian: false,
-    image: 'https://images.unsplash.com/photo-1534440058948-3fd16f1c192c?auto=format&fit=crop&q=80&w=600'
+    image: '/images/dishes/beef-guinness-stew.png'
   },
   {
     id: 'm5',
@@ -229,7 +229,7 @@ export const menuData = [
     description: 'Slow-roasted with rosemary and garlic, served on creamy colcannon mash',
     category: 'Mains',
     vegetarian: false,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAp9I2TFQE3YHLrXf05rSKKAKj1JIm4hSJZW4jHtDBhYxhBOWpIFWAwhEvjo56jRjgq1ELwu2HdapzIy2nEGh9ftaoiIs9UpopMObnkINFG-mqQ8aYvSQOzNYma0_RESutZNTDK7hvEziJSDDaVEHM-VzApikADYwlmKN4dsMJMy20ANkgaexPLvY70hENNsAEjh4TUxxSicz3sY0QhBwjWZTV2QdosXqOHc5hgmZW7zFmK7S0ZRaiz-vJBIT4QOHiWvilI4Pm6HRg'
+    image: '/images/dishes/lamb-shank.png'
   },
   {
     id: 'm6',
@@ -238,7 +238,7 @@ export const menuData = [
     description: 'Beer-bathed cod, mushy peas, tartare sauce, thick-cut chips',
     category: 'Mains',
     vegetarian: false,
-    image: 'https://images.unsplash.com/photo-1594041680534-e8c8cdebd679?auto=format&fit=crop&q=80&w=600'
+    image: '/images/dishes/fish-and-chips.png'
   },
   {
     id: 'm7',
@@ -339,7 +339,7 @@ export const menuData = [
     description: 'House-ground beef patty with lettuce, tomato, and secret sauce',
     category: 'Burgers',
     vegetarian: false,
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop'
+    image: '/images/dishes/classic-burger.png'
   },
   {
     id: 'bg2',
